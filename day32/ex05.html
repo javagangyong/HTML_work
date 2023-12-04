@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05.html</title>
+    <style>
+        div.overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border: 1px solid black;
+        }
+        div.content {
+            transition-duration: 1s;
+            position: fixed;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* 화면을 한 가운데로 보낼때 가장 많이 사용하는 방법 */
+            /* position fixed는 왼쪽위 꼭지점 기준으로 화면의 제일 왼쪽 위로 보낸다 */
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px black;
+            z-index: 2;
+            padding: 10px;
+        }
+        .button {
+            position: relative;
+            width: 70px;
+            border: 1px solid red;
+            background-color: white;
+            z-index: 3;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            margin: 10px;
+        }
+        div.button:hover {
+            background-color: red;
+            color: white;
+        }
+        div.modal {
+            opacity: 0;
+            transition-duration: 1s;
+            z-index: -1;
+        }
+        div.modal > div.content {
+            transform: translate(-50%, -50%);
+        }
+        div.button:hover + div.modal > div.content {
+            top: 50%;
+            transition-duration: 1s;
+        }
+        div.button:hover + div.modal {
+            opacity: 1;
+            transition-duration: 1s;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>css 모달</h1>
+    <hr>
+
+    <div id="root">
+        <div class="button">버튼1</div>
+        <div class="modal">
+            <div class="overlay"></div>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore, tempora tenetur commodi, suscipit asperiores sint ratione itaque vero reprehenderit veniam dolorem praesentium nam incidunt, dolore quasi nobis pariatur sed.</p>
+            </div>
+        </div>
+    
+        <div class="button">버튼2</div>
+        <div class="modal">
+            <div class="overlay"></div>
+            <div class="content">
+                <p align="center">
+                    <img src="danbi.jpg" width="200">
+                </p>
+                <p align="center">파란색은 싫어 핑크색이 좋단말야</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
